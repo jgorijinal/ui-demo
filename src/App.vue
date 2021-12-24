@@ -1,16 +1,18 @@
 <template>
   <div>
-    <Frank />
+    <nav>导航栏 |
+      <router-link to="/">Frank</router-link> |
+      <router-link to="/xxx">Test</router-link>
+    </nav>
+    <router-view />
   </div>
 
 </template>
 
 <script>
-import Frank from './components/Frank.vue'
+
 export default {
   name: 'App',
-  components: {
-    Frank
-  }
+
 }
 </script>
