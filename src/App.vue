@@ -1,12 +1,7 @@
 <template>
-  <div>
-    <nav>导航栏 |
-      <router-link to="/">Frank</router-link> |
-      <router-link to="/xxx">Test</router-link>
-    </nav>
+ <div>
     <router-view />
   </div>
-
 </template>
 
 <script>
@@ -16,3 +11,6 @@ export default {
 
 }
 </script>
+<style lang="sass" scoped>
+
+</style>
