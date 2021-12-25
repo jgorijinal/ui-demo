@@ -1,45 +1,13 @@
 <template>
   <div>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
-  <p>这是switch文档</p>
+  <Switch />
   </div>
 </template>
-<script  lang="ts">
-export default {
 
+<script  lang="ts">
+import Switch from '../lib/Switch.vue'
+export default {
+components:{Switch}
 }
 </script>
 <style>
