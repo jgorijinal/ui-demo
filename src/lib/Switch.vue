@@ -2,52 +2,67 @@
   <button :class="{checked:value}" @click="toggle">
     <span></span>
   </button>
-  <div>{{value === true ? '已确定' : '已取消'}}</div>
 </template>
 
 <script lang="ts">
-import {ref} from "vue";
+import {ref} from 'vue';
 
 export default {
-  name: "Switch",
-  props:{value:Boolean},
-  setup(props,context){
-    const toggle = ()=>{
-       context.emit('update:value',!props.value)
-    }
-    return{ toggle}
+  name: 'Switch',
+  props: {value: Boolean},
+  setup(props, context) {
+    const toggle = () => {
+      context.emit('update:value', !props.value);
+    };
+    return {toggle};
   }
 
-}
+};
 </script>
 
 <style lang="scss" scoped>
-$h:22px;
+$h: 22px;
 $h2: $h - 4px;
 button {
-  width:$h *2;
+  width: $h *2;
   height: $h;
-  background:grey;
+  background: #bfbfbf;
   border: none;
   border-radius: $h/2;
   position: relative;
+
+  span {
+    display: inline-block;
+    width: $h2;
+    height: $h2;
+    background: white;
+    border-radius: $h/2;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    transition: all 250ms;
+  }
 }
-span{
-  display: inline-block;
-  width:$h2;
-  height:$h2;
-  background: white;
-  border-radius: $h/2;
-  position: absolute;
-  left:2px;
-  top:2px;
-  transition: left 250ms ;
+
+button.checked {
+  background: #1890ff;
+
+  span {
+    left: calc(100% - #{$h2} - 3px);
+  }
+  &:active {
+  > span {
+    width: $h2 + 4px;
+    margin-left: -4px;
+  }
 }
-button.checked{
-  background: blue;
- span{
-   left:23px;
- }
 }
+
+button:active {
+  > span {
+    width: $h2 + 4px;
+  }
+}
+
 
 </style>
