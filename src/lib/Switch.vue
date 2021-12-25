@@ -1,20 +1,21 @@
 <template>
-  <button :class="{checked:x}" @click="toggle">
+  <button :class="{checked:value}" @click="toggle">
     <span></span>
   </button>
+  <div>{{value === true ? '已确定' : '已取消'}}</div>
 </template>
 
-<script>
+<script lang="ts">
 import {ref} from "vue";
 
 export default {
   name: "Switch",
-  setup(){
-    const x = ref(false)
+  props:{value:Boolean},
+  setup(props,context){
     const toggle = ()=>{
-      x.value= !x.value
+       context.emit('input',!props.value)
     }
-    return{x, toggle}
+    return{ toggle}
   }
 
 }
