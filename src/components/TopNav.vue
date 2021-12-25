@@ -20,6 +20,8 @@ export default {
   display: flex;
   padding: 16px;
   border-bottom: 1px solid #eaecef;
+  position: relative;
+  z-index:10;
   > .logo {
     max-width: 6em;
     margin-right: auto;
