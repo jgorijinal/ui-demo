@@ -79,15 +79,13 @@ aside {
   > h2 {
     margin-bottom: 4px;
   }
-
   > ol {
     > li {
       padding: 4px 0;
     }
   }
-main{
-  overflow: auto;
 }
-
+main {
+  overflow: auto;
 }
 </style>
