@@ -37,6 +37,16 @@
     <Button theme="text" level="normal">Default</Button>
     <Button theme="text" level="danger">Danger</Button>
   </div>
+  <h2>实例4</h2>
+    <div>
+      <Button disabled>禁用按钮</Button>
+      <Button theme="link" disabled>禁用链接按钮</Button>
+      <Button theme="text" disabled>禁用按钮</Button>
+    </div>
+  <h2>实例5</h2>
+  <div>
+    <Button loading>Loading </Button>
+  </div>
 </template>
 
 <script lang="ts">

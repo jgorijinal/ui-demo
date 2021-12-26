@@ -1,5 +1,6 @@
 <template>
-    <button class="gulu-button" :class="classes">
+    <button class="gulu-button" :class="classes" :disabled="disabled" :loading="loading">
+      <sapn v-if="loading" class="gulu-loadingIndicator" />
       <slot/>
     </button>
 </template>
@@ -20,6 +21,14 @@ props:{
   level:{
     type:String,
     default:'normal'
+  },
+  disabled:{
+    type:Boolean,
+    default:false
+  },
+  loading:{
+    type:Boolean,
+    default:false
   }
 },
   setup(props){
@@ -45,6 +54,8 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red:red;
+$grey:grey;
+$darkblue:#2a659b;
 .gulu-button {
   box-sizing: border-box;
   height: $h;
@@ -69,7 +80,7 @@ $red:red;
     color: $blue;
     border-color: $blue;
   }
-&:active{
+  &:active{
   color: #508af5;
   border-color: #508af5;
 }
@@ -158,5 +169,34 @@ $red:red;
       }
     }
   }
-}
+  &.gulu-theme-button {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+  &.gulu-theme-link, &.gulu-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+    }
+  }
+  >.gulu-loadingIndicator{
+    display:inline-block;
+    width:14px;
+    height:14px;
+    border-color: $darkblue $darkblue $darkblue transparent;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 50%;
+    margin-right:4px;
+    animation:gulu-spin 1s infinite linear ;
+  }
+  @keyframes gulu-spin {
+    0%{transform: rotate(0deg)}
+    100%{transform: rotate(360deg)}
+  }}
 </style>
