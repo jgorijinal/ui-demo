@@ -1,61 +1,59 @@
 <template>
-    <h1>第一个实例</h1>
-    <h2>按钮</h2>
+  <h1>实例1</h1>
+  <Button>Hello</Button>
+  <Button theme="button">button</Button>
+  <Button theme="link">link</Button>
+  <Button theme="text">text</Button>
+  <h2>实例2</h2>
   <div>
-    <Button>你好</Button>
-    <Button theme="button">你好</Button>
-    <Button theme="link">你好</Button>
-    <Button theme="text">你好</Button>
+    <Button size="big">Large</Button>
+    <Button size="normal">Default</Button>
+    <Button size="small">Small</Button>
   </div>
- </template>
+  <div>
+    <Button theme="link" size="big">Large</Button>
+    <Button theme="link" size="normal">Default</Button>
+    <Button theme="link" size="small">Small</Button>
+  </div>
+  <div>
+    <Button theme="text" size="big">Large</Button>
+    <Button theme="text" size="normal">Default</Button>
+    <Button theme="text" size="small">Small</Button>
+  </div>
+  <h2>实例3</h2>
+  <div>
+    <Button level="main">Main</Button>
+    <Button level="normal">Default</Button>
+    <Button level="danger">Danger</Button>
+  </div>
+  <div>
+    <Button theme="link" level="main">Main</Button>
+    <Button theme="link" level="normal">Default</Button>
+    <Button theme="link" level="danger">Danger</Button>
 
-<script  lang="ts">
-import Button from '../lib/Button.vue'
+  </div>
+  <div>
+    <Button theme="text" level="main">Main</Button>
+    <Button theme="text" level="normal">Default</Button>
+    <Button theme="text" level="danger">Danger</Button>
+  </div>
+</template>
+
+<script lang="ts">
+import Button from '../lib/Button.vue';
+
 export default {
-  name: "ButtonDemo",
-  components:{Button},
-  setup(){
-    const onClick =()=>{
-      console.log('hi')
-    }
-    return {onClick}
+  name: 'ButtonDemo',
+  components: {Button},
+  setup() {
+    const onClick = () => {
+      console.log('hi');
+    };
+    return {onClick};
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-$h: 32px;
-$border-color: #d9d9d9;
-$color: #333;
-$blue: #40a9ff;
-$radius: 4px;
-.gulu-button {
-  box-sizing: border-box;
-  height: $h;
-  padding: 0 12px;
-  cursor: pointer;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  white-space: nowrap;
-  background: white;
-  color: $color;
-  border: 1px solid $border-color;
-  border-radius: $radius;
-  box-shadow: 0 1px 0 fade-out(black, 0.95);
-  & + & {
-    margin-left: 8px;
-  }
-  &:hover,
-  &:focus {
-    color: $blue;
-    border-color: $blue;
-  }
-  &:focus {
-    outline: none;
-  }
-  &::-moz-focus-inner {
-    border: 0;
-  }
-}
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <button :class="{checked:value}" @click="toggle">
+  <button class="gulu-switch" :class="{'gulu-checked':value}" @click="toggle">
     <span></span>
   </button>
 </template>
@@ -21,49 +21,26 @@ props:{
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 $h: 22px;
 $h2: $h - 4px;
-button {
-  width: $h *2;
-  height: $h;
-  background: #bfbfbf;
-  border: none;
-  border-radius: $h/2;
-  position: relative;
-
-  span {
-    display: inline-block;
-    width: $h2;
-    height: $h2;
-    background: white;
-    border-radius: $h/2;
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    transition: all 250ms;
+.gulu-switch {
+  height: $h; width: $h * 2; border: none; background: #bfbfbf; border-radius: $h/2; position: relative;
+  > span {
+    position: absolute; top: 2px; left: 2px; height: $h2; width: $h2; background: white; border-radius: $h2 / 2; transition: all 250ms;
   }
-}
-
-button.checked {
-  background: #1890ff;
-
-  span {
-    left: calc(100% - #{$h2} - 3px);
+  &.gulu-checked { background: #1890ff;
+    > span { left: calc(100% - #{$h2} - 2px); }
   }
+  &:focus { outline: none; }
   &:active {
-  > span {
-    width: $h2 + 4px;
-    margin-left: -4px;
+    > span { width: $h2 + 4px; }
+  }
+  &.gulu-checked:active {
+    > span { width: $h2 + 4px; margin-left: -4px; }
   }
 }
-}
-
-button:active {
-  > span {
-    width: $h2 + 4px;
-  }
-}
+</style>
 
 
 </style>
