@@ -16,7 +16,7 @@ export const openDialog=(options)=>{
           }
         },
         ok, cancel
-      },{title,content})
+      },{title,main:content})
     }
   })
     app.mount(div)
