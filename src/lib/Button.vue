@@ -1,6 +1,6 @@
 <template>
     <button class="gulu-button" :class="classes" :disabled="disabled" :loading="loading">
-      <sapn v-if="loading" class="gulu-loadingIndicator" />
+      <span v-if="loading" class="gulu-loadingIndicator" />
       <slot/>
     </button>
 </template>
@@ -40,7 +40,6 @@ props:{
         [`gulu-level-${level}`]:level,
       }
     })
-    console.log(classes.value)
     return {classes}
   }
 

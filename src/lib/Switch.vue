@@ -42,5 +42,3 @@ $h2: $h - 4px;
 }
 </style>
 
-
-</style>
