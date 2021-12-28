@@ -3,13 +3,15 @@
     <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
     <div class="gulu-dialog-wrapper">
       <div class="gulu-dialog">
-        <header>{{title}} <span class="gulu-dialog-close" @click="close"></span></header>
+        <header>
+          <slot name="title"></slot>
+          <span class="gulu-dialog-close" @click="close"></span></header>
         <main>
-          <slot />
+          <slot name="main"></slot>
         </main>
         <footer>
+          <Button @click="cancel">Cancel</Button>
           <Button level="main" @click="ok">OK</Button>
-          <Button  @click="cancel">Cancel</Button>
         </footer>
       </div>
     </div>
@@ -21,47 +23,43 @@ import Button from '../lib/Button.vue';
 
 export default {
   props: {
-    title:{
-      type:String,
-      default:'提示'
-    },
     visible: {
       type: Boolean,
       default: false
     },
-    closeOnClickOverlay:{
-      type:Boolean,
+    closeOnClickOverlay: {
+      type: Boolean,
       default: true
     },
-    ok:{
-      type:Function
+    ok: {
+      type: Function
     },
-    cancel:{
-      type:Function
+    cancel: {
+      type: Function
     }
   },
   components: {
     Button
   },
-  setup(props,context){
-    const close=()=>{
-      context.emit('update:visible',!props.visible)
-    }
-    const onClickOverlay = ()=>{
-        if(props.closeOnClickOverlay){
-            close()
-        }
-    }
-    const ok=()=>{
-      if(props.ok && props.ok() !== false){
-        close()
+  setup(props, context) {
+    const close = () => {
+      context.emit('update:visible', !props.visible);
+    };
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        close();
       }
-    }
-    const cancel=()=>{
-      close()
-    }
+    };
+    const ok = () => {
+      if (props.ok && props.ok() !== false) {
+        close();
+      }
+    };
+    const cancel = () => {
+      close();
+    };
 
-    return {close,onClickOverlay,ok,cancel}
+    return {close, onClickOverlay, ok, cancel};
   }
 };
 </script>
@@ -73,7 +71,7 @@ $border-color: #d9d9d9;
   background: white;
   border-radius: $radius;
   box-shadow: 0 0 3px fade_out(black, 0.5);
-  min-width: 15em;
+  min-width: 20em;
   max-width: 90%;
 
   &-overlay {
@@ -105,6 +103,7 @@ $border-color: #d9d9d9;
 
   > main {
     padding: 12px 16px;
+    min-height:100px;
   }
 
   > footer {

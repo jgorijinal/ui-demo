@@ -1,9 +1,13 @@
 <template>
   <h1>dialog组件</h1>
   <Button @click="toggle" >toggle</Button>
-  <Dialog title="这里是标题" v-model:visible="x" :closeOnClickOverlay="false" :ok="fn1" :cancel="fn2">
-    <h1>hello</h1>
-    <p>Dialog组件</p>
+  <Dialog  v-model:visible="x" :closeOnClickOverlay="false" :ok="fn1" :cancel="fn2">
+    <template v-slot:title>
+      <strong>Title</strong>
+    </template>
+    <template v-slot:main>
+     <p>Content of the modal</p>
+    </template>
   </Dialog>
 </template>
 
