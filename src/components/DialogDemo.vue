@@ -1,7 +1,7 @@
 <template>
   <h1>dialog组件</h1>
-  <Button @click="toggle">toggle</Button>
-  <Dialog :visible="x"></Dialog>
+  <Button @click="toggle" >toggle</Button>
+  <Dialog v-model:visible="x" :closeOnClickOverlay="false" :ok="fn1" :cancel="fn2">45644</Dialog>
 </template>
 
 <script  lang="ts">
@@ -14,11 +14,16 @@ export default {
   },
   setup(){
     const x = ref(false)
-    console.log(x)
     const toggle = ()=>{
       x.value = !x.value
     }
-    return {x,toggle}
+    const fn1= ()=>{
+      console.log(1)
+    }
+    const fn2=()=>{
+      console.log(2)
+    }
+    return {x,toggle,fn1,fn2}
   }
 }
 </script>
