@@ -1,7 +1,10 @@
 <template>
   <h1>dialog组件</h1>
   <Button @click="toggle" >toggle</Button>
-  <Dialog v-model:visible="x" :closeOnClickOverlay="false" :ok="fn1" :cancel="fn2">45644</Dialog>
+  <Dialog title="这里是标题" v-model:visible="x" :closeOnClickOverlay="false" :ok="fn1" :cancel="fn2">
+    <h1>hello</h1>
+    <p>Dialog组件</p>
+  </Dialog>
 </template>
 
 <script  lang="ts">
