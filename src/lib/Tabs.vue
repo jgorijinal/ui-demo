@@ -1,27 +1,74 @@
 <template>
-  <div v-for="(title,index) in results" :key="index">{{title}}</div>
-  <component v-for="(tag,index) in defaults" :key="index" :is="tag"></component>
+  <div class="gulu-tabs">
+    <div class="gulu-tabs-nav">
+      <div @click="select(title)" class="gulu-tabs-nav-item" :class="{selected:title === selected}" v-for="(title,index) in results" :key="index" >{{title}}</div>
+    </div>
+    <div class="gulu-tabs-content">
+     <component class="gulu-tabs-content-item" :class="{selected:tag.props.title === selected}"  v-for="(tag,index) in defaults" :is="tag"  :key="index"></component>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import  Tab from './Tab.vue'
+import { computed } from 'vue';
+import Tab from './Tab.vue';
+
 export default {
-name:'Tab',
-setup(props,context){
-  //console.log(context.slots.default()[0].type  === Tab)
- const defaults = context.slots.default()
-  console.log(defaults)
-  defaults.forEach(tags=> {
-   if(tags.type !== Tab) {
-     throw new Error('Tabs的子组件必须是Tab')
-   }
-  })
-  const results= defaults.map(tags=>tags.props.title)
- return {defaults,results}
-}
-}
+  props:{
+    selected:{
+      type:String
+    }
+  },
+  name: 'Tab',
+  setup(props, context) {
+    const defaults = context.slots.default()
+    defaults.forEach(tag=>{
+      if(tag.type !== Tab) {
+        throw new Error('Tabs的子标签必须是Tab')
+      }
+    })
+    const results = defaults.map(tag => tag.props.title)
+    const current = computed(()=>{
+        return defaults.filter(tag=> tag.props.title === props.selected)[0]
+    })
+    const select =  (title:String)=>{
+      context.emit('update:selected',title)
+    }
+    return {defaults,results,current,select}
+  }
+};
+
 </script>
 
 <style lang="scss">
-
+$blue: #40a9ff;
+$color: #333;
+$border-color: #d9d9d9;
+.gulu-tabs {
+  &-nav {
+    display: flex;
+    color: $color;
+    border-bottom: 1px solid $border-color;
+    &-item {
+      padding: 8px 0;
+      margin: 0 16px;
+      cursor: pointer;
+      &:first-child {
+        margin-left: 0;
+      }
+      &.selected {
+        color: $blue;
+      }
+    }
+  }
+  &-content {
+    padding: 8px 0;
+    &-item {
+    display: none;
+      &.selected{
+        display:block;
+      }
+  }
+  }
+}
 </style>

@@ -1,5 +1,8 @@
 <template>
- <slot />
+  <div>
+    <slot />
+  </div>
+
 </template>
 
 <script lang="ts">
@@ -9,7 +12,7 @@ export default {
 props:{
     title:{
       type:String,
-      default:'Tab'
+      default:'defaultTab'
     }
 }
 }
