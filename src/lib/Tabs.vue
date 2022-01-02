@@ -1,16 +1,17 @@
 <template>
   <div class="gulu-tabs">
-    <div class="gulu-tabs-nav">
-      <div @click="select(title)" class="gulu-tabs-nav-item" :class="{selected:title === selected}" v-for="(title,index) in results" :key="index" >{{title}}</div>
-      <div class="gulu-tabs-nav-indicator"></div>
+    <div class="gulu-tabs-nav" ref="container">
+      <div @click="select(title)" class="gulu-tabs-nav-item" :ref="el=> {if(el) navItems[index] = el} " :class="{selected:title === selected}" v-for="(title,index) in results" :key="index" >{{title}}</div>
+      <div class="gulu-tabs-nav-indicator"  ref="indicator"></div>
     </div>
     <div class="gulu-tabs-content">
      <component class="gulu-tabs-content-item" :class="{selected:tag.props.title === selected}"  v-for="(tag,index) in defaults" :is="tag"  :key="index"></component>
     </div>
   </div>
 </template>
-
+.
 <script lang="ts">
+import {onMounted, onUpdated, ref } from 'vue';
 import Tab from './Tab.vue';
 
 export default {
@@ -21,6 +22,31 @@ export default {
   },
   name: 'Tab',
   setup(props, context) {
+    const navItems = ref<HTMLDivElement[]>([])
+    const indicator = ref<HTMLDivElement>(null)
+    const container = ref<HTMLDivElement>(null)
+    onMounted(()=>{
+      const divs = navItems.value;
+      const result = divs.filter(div=>div.classList.contains('selected'))[0]
+      const {width} = result.getBoundingClientRect()
+      indicator.value.style.width = width + 'px'
+
+      const {left:left1} = result.getBoundingClientRect()
+      const {left:left2} = container.value.getBoundingClientRect()
+      const x = left1 - left2
+      indicator.value.style.left = x +'px'
+    })
+    onUpdated(()=>{
+      const divs = navItems.value;
+      const result = divs.filter(div=>div.classList.contains('selected'))[0]
+      const {width} = result.getBoundingClientRect()
+      indicator.value.style.width = width + 'px'
+
+      const {left:left1} = result.getBoundingClientRect()
+      const {left:left2} = container.value.getBoundingClientRect()
+      const x = left1 - left2
+      indicator.value.style.left = x +'px'
+    })
     const defaults = context.slots.default()
     defaults.forEach(tag=>{
       if(tag.type !== Tab) {
@@ -31,7 +57,7 @@ export default {
     const select =  (title:String)=>{
       context.emit('update:selected',title)
     }
-    return {defaults,results,select}
+    return {defaults,results,select,navItems,indicator,container}
   }
 };
 
@@ -54,6 +80,7 @@ $border-color: #d9d9d9;
       left:0;
       height:3px;
       background: $blue;
+      transition: all 250ms;
     }
     &-item {
       padding: 8px 0;
