@@ -2,6 +2,7 @@
   <div class="gulu-tabs">
     <div class="gulu-tabs-nav">
       <div @click="select(title)" class="gulu-tabs-nav-item" :class="{selected:title === selected}" v-for="(title,index) in results" :key="index" >{{title}}</div>
+      <div class="gulu-tabs-nav-indicator"></div>
     </div>
     <div class="gulu-tabs-content">
      <component class="gulu-tabs-content-item" :class="{selected:tag.props.title === selected}"  v-for="(tag,index) in defaults" :is="tag"  :key="index"></component>
@@ -10,7 +11,6 @@
 </template>
 
 <script lang="ts">
-import { computed } from 'vue';
 import Tab from './Tab.vue';
 
 export default {
@@ -28,13 +28,10 @@ export default {
       }
     })
     const results = defaults.map(tag => tag.props.title)
-    const current = computed(()=>{
-        return defaults.filter(tag=> tag.props.title === props.selected)[0]
-    })
     const select =  (title:String)=>{
       context.emit('update:selected',title)
     }
-    return {defaults,results,current,select}
+    return {defaults,results,select}
   }
 };
 
@@ -49,6 +46,15 @@ $border-color: #d9d9d9;
     display: flex;
     color: $color;
     border-bottom: 1px solid $border-color;
+    position: relative;
+    &-indicator{
+      position: absolute;
+      width:100px;
+      bottom:-1px;
+      left:0;
+      height:3px;
+      background: $blue;
+    }
     &-item {
       padding: 8px 0;
       margin: 0 16px;
