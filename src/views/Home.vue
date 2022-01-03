@@ -95,7 +95,7 @@ $border-radius: 4px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-    }
+    } 
     @media (min-width:1200px){
       width: 1200px;
       display: flex;
