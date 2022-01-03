@@ -52,6 +52,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+*{
+box-sizing: border-box;
+}
 .layout {
   display: flex;
   flex-direction: column;
@@ -62,7 +65,7 @@ export default {
   > .content {
     flex-grow: 1;
     padding-top: 60px;
-    padding-left: 156px;
+    padding-left: 186px;
     @media (max-width: 500px) {
       padding-left: 0;
     }
@@ -80,21 +83,37 @@ export default {
   }
 }
 aside {
-  background: lightblue;
-  width: 150px;
-  padding: 16px;
+  background: white; //////////////////////////
+  width: 180px;
+  padding: 16px 0;
   position: fixed;
   top: 0;
   left: 0;
   padding-top: 80px;
   height: 100%;
+  border-right: 1px solid #cec9c9;
   > h2 {
     margin-bottom: 4px;
+    padding-left: 16px;
   }
   > ol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     > li {
-      padding: 4px 0;
+
+      &:hover{
+        color: #3eaf7c;
+      }
+      a {
+        padding: 4px 16px;
+        display: block;
+      }
     }
+  }
+  .router-link-active {
+    font-weight: 600;
+    color: #3eaf7c;
   }
 }
 main {
