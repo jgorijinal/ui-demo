@@ -1,11 +1,13 @@
 <template>
-  <div>
-    起步
-  </div>
+ <article class="markdown-body" v-html="md"></article>
 </template>
-<script lang="ts">
-export default {
 
+<script lang="js">
+import md from '../markdown/get-started.md';
+export default {
+data(){
+  return {md}
+}
 }
 </script>
 

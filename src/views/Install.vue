@@ -1,11 +1,12 @@
 <template>
-  <div>
-安装
-  </div>
+  <article class="markdown-body" v-html="md"></article>
 </template>
-<script lang="ts">
+<script lang="js">
+import md from '../markdown/install.md'
 export default {
-
+data(){
+  return {md}
+}
 }
 </script>
 
