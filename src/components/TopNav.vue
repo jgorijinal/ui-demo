@@ -43,13 +43,13 @@ export default {
 .topNav {
   color: black;
   display: flex;
-  padding: 16px;
+  padding: 12px ;
   border-bottom: 1px solid #eaecef;
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  z-index:10;
+  z-index:20;background: white;
 
   > .logo {
     max-width: 6em;
