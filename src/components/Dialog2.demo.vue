@@ -1,5 +1,5 @@
 <demo>
-一键打开Dialog
+2.一键打开Dialog
 </demo>
 
 <template>

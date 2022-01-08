@@ -1,5 +1,5 @@
 <demo>
-支持 disabled
+2.支持 disabled
 </demo>
 
 <template>

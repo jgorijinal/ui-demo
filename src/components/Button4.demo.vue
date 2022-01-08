@@ -1,5 +1,5 @@
 <demo>
-支持 disabled属性
+4.支持 disabled属性
 </demo>
 
 <template>

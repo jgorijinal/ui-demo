@@ -52,6 +52,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$aside-index:10;
 *{
 box-sizing: border-box;
 }
@@ -92,6 +93,7 @@ aside {
   padding-top: 80px;
   height: 100%;
   border-right: 1px solid #cec9c9;
+  z-index: $aside-index;
   > h2 {
     margin-bottom: 4px;
     padding-left: 16px;
