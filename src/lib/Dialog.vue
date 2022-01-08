@@ -58,8 +58,9 @@ export default {
     const cancel = () => {
       if (props.cancel && props.cancel() !== false) {
         close();
-      };
-    }
+      }
+      ;
+    };
     return {close, onClickOverlay, ok, cancel};
   }
 };
@@ -104,7 +105,7 @@ $border-color: #d9d9d9;
 
   > main {
     padding: 12px 16px;
-    min-height:100px;
+    min-height: 100px;
   }
 
   > footer {

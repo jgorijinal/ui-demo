@@ -2,8 +2,9 @@
   <div class="topNav">
     <router-link to="/" class="logo">
       <svg class="icon">
-        <use xlink:href="#icon-ui"></use>
+        <use xlink:href="#icon-dna"></use>
       </svg>
+      <span class="logo-name">DNA-UI</span>
     </router-link>
     <ul class="menu">
       <li>菜单1</li>
@@ -52,12 +53,19 @@ export default {
   z-index:20;background: white;
 
   > .logo {
-    max-width: 6em;
+    max-width: 8em;
     margin-right: auto;
-
+  display: flex;
+    align-items: center;
     > svg {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
+    }
+    >.logo-name{
+      display:inline-block;
+      font-size:1.3rem;
+      font-weight: 500;
+      margin-left: 10px;
     }
   }
 
