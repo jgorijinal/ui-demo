@@ -9,9 +9,10 @@
 </template>
 
 <script>
-import {openDialog} from "../lib/openDialog";
-import Button from "../lib/Button.vue";
-
+import {
+  Button,
+  openDialog
+} from "../lib/index";
 export default {
   components: {
     Button

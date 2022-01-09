@@ -12,8 +12,8 @@ export default {
         globals: {
             vue: 'Vue'
         },
-        name: 'Gulu',
-        file: 'dist/lib/gulu.js',
+        name: 'Dna',
+        file: 'dist/lib/dna.js',
         format: 'umd',
         plugins: [terser()]
     },

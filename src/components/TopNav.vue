@@ -7,8 +7,7 @@
       <span class="logo-name">DNA-UI</span>
     </router-link>
     <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li><router-link to="/doc/intro">文档</router-link></li>
     </ul>
     <span v-if="toggleMenuButtonVisible === true" class="toggleAside" @click="toggleMenu">
           <svg class="icon">

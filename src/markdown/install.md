@@ -3,13 +3,13 @@
 打开终端运行下列命令：
 
 ```
-npm install dna-ui
+npm install dna-ui-1
 ```
 
 或
 
 ```
-yarn add dna-ui
+yarn add dna-ui-1
 ```
 
 下一节：[开始使用](#/doc/get-started)
